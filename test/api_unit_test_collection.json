@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "99885a63-e4b8-451b-b8c2-c7e704ddf8f1",
+		"name": "[클라우드 플랫폼] API실습",
+		"description": "Connected Platform API Practice Assignment Grading Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27347036"
+	},
+	"item": [
+		{
+			"name": "1-1. Get Recommendations - No user_id (Task1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"[Task1-1] Valid User Recommendations - Status Code 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"[Task1-2] General Recommendations - Recommendations Property\", function () {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"recommendations\");",
+							"});",
+							"",
+							"pm.test(\"[Task1-3] General Recommendations - Array Response\", function () {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.recommendations).to.be.an('array');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/recommendations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"recommendations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-2. Get Recommendations - Non-existent User (Task1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"[Task1-2] Non-existent User - Status Code 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/recommendations?userId=99999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"recommendations"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "99999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-3. Get Recommendations - Valid User (Task1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"[Task1-3] Valid User Recommendations - Status Code 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"[Task1-3] General Recommendations - Recommendations Property\", function () {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"recommendations\");",
+							"});",
+							"",
+							"pm.test(\"[Task1-3] General Recommendations - Array Response\", function () {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.recommendations).to.be.an('array');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/recommendations?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"recommendations"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Content Creation API Test (Task2)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"[Task2] Content Creation - Status Code 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"[Task2] Content Creation - Response Structure\", function () {",
+							"    const responseJson = pm.response.json();",
+							"    ",
+							"    // 필수 필드들을 배열로 정의 (camelCase, snake_case 둘 다)",
+							"    const requiredFields = [",
+							"        ['contentId', 'content_id'],",
+							"        ['createdAt', 'created_at'], ",
+							"        ['updatedAt', 'updated_at']",
+							"    ];",
+							"    ",
+							"    requiredFields.forEach(fieldOptions => {",
+							"        const hasField = fieldOptions.some(field => responseJson.hasOwnProperty(field));",
+							"        pm.expect(hasField).to.be.true;",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Test Movie\",\n  \"type\": \"tvshow\",\n  \"year\": 2024,\n  \"genre\": \"Action\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/contents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"contents"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

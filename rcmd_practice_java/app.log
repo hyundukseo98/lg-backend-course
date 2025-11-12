@@ -1,0 +1,98 @@
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :resolveMainClassName UP-TO-DATE
+
+> Task :bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-10T11:06:54.842+09:00  INFO 420438 --- [           main] c.e.rcmd.RcmdPracticeSpringApplication   : Starting RcmdPracticeSpringApplication using Java 17.0.16 with PID 420438 (/home/jaewon/Projects/rcmd_practice_spring/build/classes/java/main started by jaewon in /home/jaewon/Projects/rcmd_practice_spring)
+2025-11-10T11:06:54.848+09:00  INFO 420438 --- [           main] c.e.rcmd.RcmdPracticeSpringApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-10T11:06:55.489+09:00  INFO 420438 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-10T11:06:55.571+09:00  INFO 420438 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 3 JPA repository interfaces.
+2025-11-10T11:06:56.117+09:00  INFO 420438 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-10T11:06:56.130+09:00  INFO 420438 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-10T11:06:56.131+09:00  INFO 420438 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-10T11:06:56.189+09:00  INFO 420438 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-10T11:06:56.190+09:00  INFO 420438 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1293 ms
+2025-11-10T11:06:56.348+09:00  INFO 420438 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-10T11:06:56.397+09:00  INFO 420438 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-11-10T11:06:56.431+09:00  INFO 420438 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-10T11:06:56.647+09:00  INFO 420438 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-10T11:06:56.673+09:00  INFO 420438 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-10T11:06:57.002+09:00  INFO 420438 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b3fc6d8
+2025-11-10T11:06:57.004+09:00  INFO 420438 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-10T11:06:57.064+09:00  WARN 420438 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-10T11:06:57.916+09:00  INFO 420438 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-10T11:06:57.932+09:00 DEBUG 420438 --- [           main] org.hibernate.SQL                        : 
+    drop table if exists movies
+Hibernate: 
+    drop table if exists movies
+2025-11-10T11:06:57.969+09:00 DEBUG 420438 --- [           main] org.hibernate.SQL                        : 
+    drop table if exists rcmd_user_movie
+Hibernate: 
+    drop table if exists rcmd_user_movie
+2025-11-10T11:06:57.982+09:00 DEBUG 420438 --- [           main] org.hibernate.SQL                        : 
+    drop table if exists users
+Hibernate: 
+    drop table if exists users
+2025-11-10T11:06:58.009+09:00 DEBUG 420438 --- [           main] org.hibernate.SQL                        : 
+    create table movies (
+        movie_id integer not null auto_increment,
+        year integer not null,
+        created_at datetime(6),
+        updated_at datetime(6),
+        genre varchar(100) not null,
+        title varchar(255) not null,
+        primary key (movie_id)
+    ) engine=InnoDB
+Hibernate: 
+    create table movies (
+        movie_id integer not null auto_increment,
+        year integer not null,
+        created_at datetime(6),
+        updated_at datetime(6),
+        genre varchar(100) not null,
+        title varchar(255) not null,
+        primary key (movie_id)
+    ) engine=InnoDB
+2025-11-10T11:06:58.188+09:00 DEBUG 420438 --- [           main] org.hibernate.SQL                        : 
+    create table rcmd_user_movie (
+        movie_id integer not null,
+        user_id integer not null,
+        primary key (movie_id, user_id)
+    ) engine=InnoDB
+Hibernate: 
+    create table rcmd_user_movie (
+        movie_id integer not null,
+        user_id integer not null,
+        primary key (movie_id, user_id)
+    ) engine=InnoDB
+2025-11-10T11:06:58.474+09:00 DEBUG 420438 --- [           main] org.hibernate.SQL                        : 
+    create table users (
+        user_id integer not null auto_increment,
+        created_at datetime(6),
+        updated_at datetime(6),
+        name varchar(100) not null,
+        primary key (user_id)
+    ) engine=InnoDB
+Hibernate: 
+    create table users (
+        user_id integer not null auto_increment,
+        created_at datetime(6),
+        updated_at datetime(6),
+        name varchar(100) not null,
+        primary key (user_id)
+    ) engine=InnoDB
+2025-11-10T11:06:58.942+09:00  INFO 420438 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-10T11:06:59.284+09:00  INFO 420438 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-10T11:06:59.837+09:00  WARN 420438 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-10T11:07:00.348+09:00  INFO 420438 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-10T11:07:00.358+09:00  INFO 420438 --- [           main] c.e.rcmd.RcmdPracticeSpringApplication   : Started RcmdPracticeSpringApplication in 5.967 seconds (process running for 6.311)
