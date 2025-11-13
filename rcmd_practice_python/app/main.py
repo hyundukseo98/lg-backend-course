@@ -26,13 +26,13 @@ app = FastAPI(
 API_PREFIX = "/api/v1"
 
 # API 라우터 등록
-app.include_router(contents.router, prefix=f"{API_PREFIX}/contents", tags=["contents"])
+app.include_router(contents.router, prefix=f"{API_PREFIX}/example/contents", tags=["contents"])
 app.include_router(users.router, prefix=f"{API_PREFIX}/users", tags=["users"])
-app.include_router(recommendations.router, prefix=f"{API_PREFIX}/recommendations", tags=["recommendations"])
+app.include_router(recommendations.router, prefix=f"{API_PREFIX}/example/recommendations", tags=["recommendations"])
 app.include_router(admin.router, prefix=f"{API_PREFIX}/admin", tags=["admin"])
 
-app.include_router(contents_todo.router, prefix=f"{API_PREFIX}/example/contents", tags=["contents_todo"])
-app.include_router(recommendations_todo.router, prefix=f"{API_PREFIX}/example/recommendations", tags=["recommendations_todo"])
+app.include_router(contents_todo.router, prefix=f"{API_PREFIX}/contents", tags=["contents_todo"])
+app.include_router(recommendations_todo.router, prefix=f"{API_PREFIX}/recommendations", tags=["recommendations_todo"])
 
 @app.get("/")
 def read_root():
