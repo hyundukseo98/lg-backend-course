@@ -1,8 +1,7 @@
 package com.example.rcmd.todo;
 
-import com.example.rcmd.service.ContentService;
 import com.example.rcmd.models.dto.ContentCreate;
-import com.example.rcmd.models.dto.RcmdContentResponse;
+import com.example.rcmd.models.dto.ContentResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class ContentTodoController {
     
     @Autowired
-    private ContentService contentService;
+    private ContentTodoService contentService;
     
     /**
      * 새 컨텐츠 생성
@@ -25,7 +24,7 @@ public class ContentTodoController {
      * 3. 예외 발생 시 적절한 HTTP 상태 코드를 반환하세요
      */
     @PostMapping
-    public ResponseEntity<RcmdContentResponse> createMovie(@Valid @RequestBody ContentCreate contentData) {
+    public ResponseEntity<ContentResponse> createContent(@Valid @RequestBody ContentCreate contentData) {
         try {
             // TODO: contentService.create() 메서드를 사용하여 컨텐츠를 생성하세요
 
