@@ -31,7 +31,7 @@ public class RecommendationTodoController {
      * 4. 적절한 예외 처리
      */
     @GetMapping
-    public ResponseEntity<List<RcmdContentResponse>> getRecommendations(@RequestParam(required = false) Integer userId) {
+    public ResponseEntity<RcmdContentResponse> getRecommendations(@RequestParam(required = false) Integer userId) {
         try {
             // TODO: userId가 있는지 확인하는 조건문 작성
             if (userId != null) {
