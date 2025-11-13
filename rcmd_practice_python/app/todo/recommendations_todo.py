@@ -4,7 +4,7 @@ from typing import Optional
 from app.core.database import get_db
 from app.dto.content import ContentTypeList
 from app.dto.recommendation import RcmdCreate
-from app.service.recommendation_service import recommendation_service
+from app.todo.recommendation_service_todo import recommendation_service_todo
 
 router = APIRouter()
 
@@ -35,7 +35,7 @@ def add_recommendation(rcmd: RcmdCreate, db: Session = Depends(get_db)):
     추천 컨텐츠 추가
     """
     try:
-        return recommendation_service.add_recommendation(db, rcmd)
+        return recommendation_service_todo.add_recommendation(db, rcmd)
     except HTTPException:
         raise
     except Exception as e:
@@ -47,7 +47,7 @@ def delete_recommendation(user_id: int, content_id: int, db: Session = Depends(g
     추천 컨텐츠 삭제
     """
     try:
-        return recommendation_service.delete_recommendation(db, user_id, content_id)
+        return recommendation_service_todo.delete_recommendation(db, user_id, content_id)
     except HTTPException:
         raise
     except Exception as e:
@@ -67,7 +67,7 @@ def get_user_recommendation_stats(
     사용자 추천 통계 조회
     """
     try:
-        return recommendation_service.get_user_recommendation_stats(db, user_id)
+        return recommendation_service_todo.get_user_recommendation_stats(db, user_id)
     except HTTPException:
         raise
     except Exception as e:

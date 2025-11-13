@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.controller import contents, users, recommendations, admin
 from app.core.database import init_db_if_needed
+from app.todo import contents_todo, recommendations_todo
 import logging
 
 # 로깅 설정
@@ -30,6 +31,9 @@ app.include_router(users.router, prefix=f"{API_PREFIX}/users", tags=["users"])
 app.include_router(recommendations.router, prefix=f"{API_PREFIX}/recommendations", tags=["recommendations"])
 app.include_router(admin.router, prefix=f"{API_PREFIX}/admin", tags=["admin"])
 
+app.include_router(contents_todo.router, prefix=f"{API_PREFIX}/example/contents", tags=["contents_todo"])
+app.include_router(recommendations_todo.router, prefix=f"{API_PREFIX}/example/recommendations", tags=["recommendations_todo"])
+
 @app.get("/")
 def read_root():
     return {
@@ -40,6 +44,8 @@ def read_root():
             "contents": "/contents",
             "users": "/users", 
             "recommendations": "/recommendations",
-            "docs": "/docs"
+            "docs": "/docs",
+            "contents_todo": "/example/contents",
+            "recommendations_todo": "/example/recommendations"
         }
     }

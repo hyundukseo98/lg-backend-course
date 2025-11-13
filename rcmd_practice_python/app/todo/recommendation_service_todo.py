@@ -8,7 +8,7 @@ from app.dto.recommendation import RcmdCreate
 from app.utils.content_utils import group_contents_by_type
 
 
-class RecommendationService:
+class RecommendationServiceTodo:
     """추천 서비스 - 비즈니스 로직 처리"""
     
     def get_recommendations(self, db: Session, user_id: Optional[int] = None) -> ContentTypeList:
@@ -115,4 +115,4 @@ class RecommendationService:
 
 
 # 서비스 인스턴스 생성
-recommendation_service = RecommendationService()
+recommendation_service_todo = RecommendationServiceTodo()
